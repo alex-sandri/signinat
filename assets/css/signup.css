@@ -1,0 +1,27 @@
+form
+{
+    max-width: 40ch;
+    margin: 0 auto;
+}
+
+form label,
+form label input
+{
+    display: block;
+}
+
+form label
+{
+    margin: 15px 0;
+}
+
+form label input
+{
+    width: 100%;
+    padding: 10px;
+    font-family: inherit;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+}
