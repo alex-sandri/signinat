@@ -6,6 +6,11 @@
     --secondary-color: white;
 }
 
+*
+{
+    box-sizing: border-box;
+}
+
 body
 {
     display: grid;
