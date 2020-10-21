@@ -15,7 +15,8 @@ form label
     margin: 15px 0;
 }
 
-form label input
+form label input,
+form button[type=submit]
 {
     width: 100%;
     padding: 10px;
@@ -24,4 +25,24 @@ form label input
     border-radius: 5px;
     color: var(--secondary-color);
     background-color: var(--primary-color);
+    outline: none;
+}
+
+form label input:focus
+{
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+}
+
+form button[type=submit]
+{
+    cursor: pointer;
+    margin-top: 30px;
+    transition: 300ms;
+}
+
+form button[type=submit]:hover,
+form button[type=submit]:focus
+{
+    opacity: 0.8;
 }
