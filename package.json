@@ -4,7 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "serve": "snowpack dev",
+    "serve": "concurrently \"snowpack dev\" \"npm run watch:sass\"",
+    "watch:sass": "sass src/scss:public/assets/css --watch",
     "build": "snowpack build"
   },
   "repository": {
@@ -19,6 +20,8 @@
   },
   "homepage": "https://github.com/alex-sandri/signinat#readme",
   "devDependencies": {
+    "concurrently": "^5.3.0",
+    "sass": "^1.27.0",
     "snowpack": "^2.15.1"
   }
 }
