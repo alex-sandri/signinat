@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/alex-sandri/signinat/issues"
   },
-  "homepage": "https://github.com/alex-sandri/signinat#readme"
+  "homepage": "https://github.com/alex-sandri/signinat#readme",
+  "devDependencies": {
+    "snowpack": "^2.15.1"
+  }
 }
