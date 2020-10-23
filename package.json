@@ -1,0 +1,20 @@
+{
+  "name": "signinat",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-sandri/signinat.git"
+  },
+  "keywords": [],
+  "author": "Alex Sandri <me@alexsandri.com> (https://alexsandri.com)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/alex-sandri/signinat/issues"
+  },
+  "homepage": "https://github.com/alex-sandri/signinat#readme"
+}
