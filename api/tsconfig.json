@@ -1,0 +1,10 @@
+{
+    "files": [ "index.ts" ],
+    "compilerOptions": {
+      "target": "ES2019",
+      "module": "ESNext",
+      "removeComments": true,
+      "strict": true,
+      "alwaysStrict": true
+    }
+}

@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "start": "concurrently \"webpack serve\" \"webpack --watch\"",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "build:api": "tsc api/index.ts"
   },
   "repository": {
     "type": "git",
