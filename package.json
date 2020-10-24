@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "serve": "concurrently \"snowpack dev\" \"npm run watch:sass\"",
+    "start": "concurrently \"snowpack dev\" \"npm run watch:sass\"",
     "watch:sass": "sass src/scss/main.scss:public/assets/css --watch --no-source-map",
     "build": "snowpack build"
   },
