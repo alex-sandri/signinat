@@ -1,0 +1,11 @@
+{
+  "name": "api",
+  "scripts": {
+    "build": "tsc"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "private": true
+}
