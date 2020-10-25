@@ -1,3 +1,5 @@
+import { ApiRequest } from "../../../api/src/typings/ApiRequest";
+
 export namespace Api
 {
     const BASE_ENDPOINT = "http://localhost:3000/api";
@@ -17,22 +19,6 @@ export namespace Api
             });
 
             return response.json();
-        }
-    }
-}
-
-namespace ApiRequest
-{
-    export namespace Users
-    {
-        export interface Create
-        {
-            name: {
-                first: string,
-                last: string,
-            },
-            email: string,
-            password: string,
         }
     }
 }
