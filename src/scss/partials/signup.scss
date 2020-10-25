@@ -26,6 +26,12 @@ form button[type=submit]
     color: $secondary-color;
     background-color: $primary-color;
     outline: none;
+
+    &:disabled
+    {
+        opacity: 0.8;
+        pointer-events: none;
+    }
 }
 
 form label input:focus
