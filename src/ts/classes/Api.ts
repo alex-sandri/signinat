@@ -21,4 +21,22 @@ export namespace Api
             return response.json();
         }
     }
+
+    export class Sessions
+    {
+        static readonly ENDPOINT = `${BASE_ENDPOINT}/sessions`;
+
+        static create = async (data: ApiRequest.Sessions.Create) =>
+        {
+            const response = await fetch(Users.ENDPOINT, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            });
+
+            return response.json();
+        }
+    }
 }
