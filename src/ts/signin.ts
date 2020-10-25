@@ -2,9 +2,13 @@ import { Api } from "./classes/Api";
 
 const form = document.querySelector("form") as HTMLFormElement;
 
+const submitButton = form.querySelector("button[type=submit]") as HTMLButtonElement;
+
 form.addEventListener("submit", async e =>
 {
     e.preventDefault();
+
+    submitButton.disabled = true;
 
     const formData = new FormData(form);
 
@@ -14,4 +18,6 @@ form.addEventListener("submit", async e =>
     });
 
     console.log(response);
+
+    submitButton.disabled = false;
 });
