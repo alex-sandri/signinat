@@ -1,6 +1,6 @@
 export namespace Api
 {
-    const BASE_ENDPOINT = "localhost:3000/api";
+    const BASE_ENDPOINT = "http://localhost:3000/api";
 
     export class Users
     {
