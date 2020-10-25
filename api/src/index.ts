@@ -18,4 +18,13 @@ app.post("/api/users", (req, res) =>
   res.send(user);
 });
 
+app.post("/api/sessions", (req, res) =>
+{
+  const credentials: ApiRequest.Sessions.Create = req.body;
+
+  // TODO: Validate
+
+  res.send(credentials);
+});
+
 app.listen(3000);
