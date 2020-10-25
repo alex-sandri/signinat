@@ -7,9 +7,11 @@ export namespace Api
 
     export class Elements
     {
-        static error = (error: string) =>
+        static error = (error: string): HTMLElement =>
         {
             const element = document.createElement("small");
+
+            if (error.length === 0) return element;
 
             element.className = "error";
 
