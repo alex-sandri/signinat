@@ -26,7 +26,13 @@ form.addEventListener("submit", async e =>
 
     if (!response.result.valid)
     {
-        // TODO
+        firstNameInput.insertAdjacentElement("afterend", Api.Elements.error(response.errors.name.first.error));
+
+        lastNameInput.insertAdjacentElement("afterend", Api.Elements.error(response.errors.name.last.error));
+
+        emailInput.insertAdjacentElement("afterend", Api.Elements.error(response.errors.email.error));
+
+        passwordInput.insertAdjacentElement("afterend", Api.Elements.error(response.errors.password.error));
     }
 
     console.log(response);

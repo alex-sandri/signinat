@@ -5,6 +5,24 @@ export namespace Api
 {
     const BASE_ENDPOINT = "http://localhost:3000/api";
 
+    export class Elements
+    {
+        static error = (error: string) =>
+        {
+            const element = document.createElement("small");
+
+            element.className = "error";
+
+            const mark = document.createElement("mark");
+
+            mark.innerText = `✖ ${error}`;
+
+            element.appendChild(mark);
+
+            return element;
+        }
+    }
+
     export class Users
     {
         static readonly ENDPOINT = `${BASE_ENDPOINT}/users`;
