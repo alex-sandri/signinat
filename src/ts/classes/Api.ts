@@ -1,4 +1,5 @@
 import { ApiRequest } from "../../../api/src/typings/ApiRequest";
+import { ApiResponse } from "../../../api/src/typings/ApiResponse";
 
 export namespace Api
 {
@@ -8,7 +9,7 @@ export namespace Api
     {
         static readonly ENDPOINT = `${BASE_ENDPOINT}/users`;
 
-        static create = async (data: ApiRequest.Users.Create) =>
+        static create = async (data: ApiRequest.Users.Create): Promise<ApiResponse.Users.Create> =>
         {
             const response = await fetch(Users.ENDPOINT, {
                 method: "POST",
@@ -26,7 +27,7 @@ export namespace Api
     {
         static readonly ENDPOINT = `${BASE_ENDPOINT}/sessions`;
 
-        static create = async (data: ApiRequest.Sessions.Create) =>
+        static create = async (data: ApiRequest.Sessions.Create): Promise<ApiResponse.Sessions.Create> =>
         {
             const response = await fetch(Sessions.ENDPOINT, {
                 method: "POST",

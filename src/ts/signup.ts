@@ -2,6 +2,11 @@ import { Api } from "./classes/Api";
 
 const form = document.querySelector("form") as HTMLFormElement;
 
+const firstNameInput = form.querySelector("#first-name") as HTMLInputElement;
+const lastNameInput = form.querySelector("#last-name") as HTMLInputElement;
+const emailInput = form.querySelector("#email") as HTMLInputElement;
+const passwordInput = form.querySelector("#password") as HTMLInputElement;
+
 const submitButton = form.querySelector("button[type=submit]") as HTMLButtonElement;
 
 form.addEventListener("submit", async e =>
@@ -10,16 +15,19 @@ form.addEventListener("submit", async e =>
 
     submitButton.disabled = true;
 
-    const formData = new FormData(form);
-
     const response = await Api.Users.create({
         name: {
-            first: (formData.get("first-name") as string).trim(),
-            last: (formData.get("last-name") as string).trim(),
+            first: firstNameInput.value.trim(),
+            last: lastNameInput.value.trim(),
         },
-        email: (formData.get("email") as string).trim(),
-        password: formData.get("password") as string,
+        email: emailInput.value.trim(),
+        password: passwordInput.value,
     });
+
+    if (!response.result.valid)
+    {
+        // TODO
+    }
 
     console.log(response);
 
