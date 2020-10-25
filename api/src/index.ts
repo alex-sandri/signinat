@@ -2,9 +2,9 @@ import * as express from "express";
 
 const app = express();
 
-app.get("/", (req, res) =>
+app.post("/api/users", (req, res) =>
 {
-  res.send('Hello World!');
+  console.log(req.body);
 });
 
 app.listen(3000);
