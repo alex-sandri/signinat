@@ -8,9 +8,15 @@ export namespace Api
 
         static create = async (data: ApiRequest.Users.Create) =>
         {
-            const response = await fetch(Users.ENDPOINT, { method: "POST", body: JSON.stringify(data) });
+            const response = await fetch(Users.ENDPOINT, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            });
 
-            return response;
+            return response.json();
         }
     }
 }

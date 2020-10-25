@@ -5,6 +5,8 @@ const app = express();
 
 app.use(cors());
 
+app.use(express.json());
+
 app.post("/api/users", (req, res) =>
 {
   res.send(req.body);
