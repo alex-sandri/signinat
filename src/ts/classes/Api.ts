@@ -28,7 +28,7 @@ export namespace Api
 
         static create = async (data: ApiRequest.Sessions.Create) =>
         {
-            const response = await fetch(Users.ENDPOINT, {
+            const response = await fetch(Sessions.ENDPOINT, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
