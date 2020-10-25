@@ -15,6 +15,8 @@ form.addEventListener("submit", async e =>
 
     submitButton.disabled = true;
 
+    [ firstNameInput, lastNameInput, emailInput, passwordInput ].forEach(element => element.parentElement?.querySelector(".error")?.remove());
+
     const response = await Api.Users.create({
         name: {
             first: firstNameInput.value.trim(),
