@@ -5,7 +5,8 @@ form
 }
 
 form label,
-form label input
+form label input,
+form label small
 {
     display: block;
 }
@@ -38,6 +39,11 @@ form label input:focus
 {
     color: $primary-color;
     background-color: $secondary-color;
+}
+
+form label small:not(:empty)
+{
+    margin-top: 5px;
 }
 
 form button[type=submit]
