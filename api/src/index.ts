@@ -45,9 +45,23 @@ app.post("/api/sessions", (req, res) =>
 {
   const credentials: ApiRequest.Sessions.Create = req.body;
 
-  // TODO: Validate
+  const response: ApiResponse.Sessions.Create = {
+    result: { valid: true },
+    errors: {
+      email: { error: "" },
+      password: { error: "" },
+    },
+  };
 
-  res.send(credentials);
+  if (credentials.email.length === 0) response.errors.email.error = "empty";
+
+  if (credentials.password.length === 0) response.errors.password.error = "empty";
+
+  if (response.errors.email.error.length > 0
+    || response.errors.password.error.length > 0
+  ) response.result.valid = false;
+
+  res.send(response);
 });
 
 app.listen(3000);
