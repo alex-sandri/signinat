@@ -1,8 +1,15 @@
+import * as admin from "firebase-admin";
 import * as express from "express";
 import * as cors from "cors";
 
 import { ApiRequest } from "./typings/ApiRequest";
 import { ApiResponse } from "./typings/ApiResponse";
+
+admin.initializeApp({
+  // TODO
+});
+
+const db = admin.firestore();
 
 const app = express();
 
@@ -38,6 +45,8 @@ app.post("/api/users", (req, res) =>
     || response.errors.email.error.length > 0
     || response.errors.password.error.length > 0
   ) response.result.valid = false;
+
+  if (response.result.valid) db.collection("users").add(user);
 
   res.send(response);
 });
