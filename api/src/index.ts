@@ -30,6 +30,7 @@ app.post("/api/users", (req, res) =>
   if (user.email.length === 0) response.errors.email.error = "empty";
 
   if (user.password.length === 0) response.errors.password.error = "empty";
+  else if (user.password.length < 8) response.errors.password.error = "weak";
 
   if (
     response.errors.name.first.error.length > 0
