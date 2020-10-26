@@ -1,3 +1,5 @@
+import * as zxcvbn from "zxcvbn";
+
 import { Api } from "./classes/Api";
 
 const form = document.querySelector("form") as HTMLFormElement;
@@ -8,6 +10,20 @@ const emailInput = form.querySelector("#email") as HTMLInputElement;
 const passwordInput = form.querySelector("#password") as HTMLInputElement;
 
 const submitButton = form.querySelector("button[type=submit]") as HTMLButtonElement;
+
+passwordInput.addEventListener("input", e =>
+{
+    const zxcvbnResult = zxcvbn(passwordInput.value);
+
+    passwordInput.parentElement?.querySelectorAll(".warning, .suggestion").forEach(element => element.remove());
+
+    passwordInput.insertAdjacentElement("afterend", Api.Elements.warning(zxcvbnResult.feedback.warning));
+
+    zxcvbnResult.feedback.suggestions.forEach(suggestion =>
+    {
+        passwordInput.insertAdjacentElement("afterend", Api.Elements.suggestion(suggestion));
+    });
+});
 
 form.addEventListener("submit", async e =>
 {

@@ -23,6 +23,40 @@ export namespace Api
 
             return element;
         }
+
+        static warning = (warning: string): HTMLElement =>
+        {
+            const element = document.createElement("small");
+
+            if (warning.length === 0) return element;
+
+            element.className = "warning";
+
+            const mark = document.createElement("mark");
+
+            mark.innerText = `⚠ ${warning}`;
+
+            element.appendChild(mark);
+
+            return element;
+        }
+
+        static suggestion = (suggestion: string): HTMLElement =>
+        {
+            const element = document.createElement("small");
+
+            if (suggestion.length === 0) return element;
+
+            element.className = "suggestion";
+
+            const mark = document.createElement("mark");
+
+            mark.innerText = `🛈 ${suggestion}`;
+
+            element.appendChild(mark);
+
+            return element;
+        }
     }
 
     export class Users

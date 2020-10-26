@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/alex-sandri/signinat#readme",
   "devDependencies": {
+    "@types/zxcvbn": "^4.4.0",
     "concurrently": "^5.3.0",
     "css-loader": "^5.0.0",
     "extract-loader": "^5.1.0",
@@ -30,5 +31,8 @@
     "webpack": "^5.2.0",
     "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "zxcvbn": "^4.4.2"
   }
 }
