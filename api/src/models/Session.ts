@@ -1,4 +1,5 @@
 import { firestore } from "firebase-admin";
+import * as bcrypt from "bcrypt";
 
 import { ApiRequest } from "../typings/ApiRequest";
 import { User } from "./User";
@@ -21,7 +22,20 @@ export class Session
     {
         Session.validate(data);
 
-        // TODO
+        const user = await User.withEmail(data.email);
+
+        if (!user) throw new Error("user/email/inexistent");
+
+        if (!bcrypt.compareSync(data.password, user.password)) throw new Error("user/password/wrong");
+
+        const session = await db.collection("sessions").add(<ISession>{
+            user: user.id,
+        });
+
+        return new Session(
+            session.id,
+            user,
+        );
     }
 
     static retrieve = async (id: string): Promise<Session | null> =>

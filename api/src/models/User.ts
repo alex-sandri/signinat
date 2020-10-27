@@ -21,7 +21,8 @@ export class User
         public id: string,
         public firstName: string,
         public lastName: string,
-        public email: string
+        public email: string,
+        public password: string,
     ) {}
 
     static create = async (data: ApiRequest.Users.Create): Promise<User> =>
@@ -32,13 +33,14 @@ export class User
 
         data.password = bcrypt.hashSync(data.password, 15);
 
-        const user = await db.collection("users").add(data);
+        const user = await db.collection("users").add(<IUser>data);
 
         return new User(
             user.id,
             data.name.first,
             data.name.last,
             data.email,
+            data.password,
         );
     }
 
@@ -55,6 +57,7 @@ export class User
             data.name.first,
             data.name.last,
             data.email,
+            data.password,
         );
     }
 
