@@ -40,6 +40,8 @@ app.post("/api/users", async (req, res) =>
   {
     const { message } = (e as Error);
 
+    response.result.valid = false;
+
     switch (message)
     {
       case "user/name/first/empty": response.errors.name.first.error = "empty"; break;
