@@ -19,9 +19,7 @@ export class Session
 
     static create = async (data: ApiRequest.Sessions.Create): Promise<Session> =>
     {
-        if (data.email.length === 0) throw new Error("user/email/empty");
-
-        if (data.password.length === 0) throw new Error("user/password/empty");
+        Session.validate(data);
 
         // TODO
     }
@@ -43,4 +41,14 @@ export class Session
     static delete = async (id: string): Promise<void> => { await db.collection("sessions").doc(id).delete(); }
 
     static exists = async (id: string): Promise<boolean> => (await Session.retrieve(id)) !== null;
+
+    /**
+     * @throws `Error` if data is not valid
+     */
+    static validate = (data: ApiRequest.Sessions.Create): void =>
+    {
+        if (data.email.length === 0) throw new Error("user/email/empty");
+
+        if (data.password.length === 0) throw new Error("user/password/empty");
+    }
 }
