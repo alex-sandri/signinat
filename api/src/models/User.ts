@@ -28,7 +28,7 @@ export class User
     {
         User.validate(data);
 
-        if (await User.exists(data.email)) throw new Error("user/already-exists");
+        if (await User.exists(data.email)) throw new Error("user/email/already-exists");
 
         data.password = bcrypt.hashSync(data.password, 15);
 

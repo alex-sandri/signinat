@@ -44,8 +44,6 @@ form.addEventListener("submit", async e =>
 
     if (!response.result.valid)
     {
-        // TODO: Show user error
-
         firstNameInput.insertAdjacentElement("afterend", Api.Elements.error(response.errors.name.first.error));
 
         lastNameInput.insertAdjacentElement("afterend", Api.Elements.error(response.errors.name.last.error));
