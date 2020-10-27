@@ -52,8 +52,10 @@ form.addEventListener("submit", async e =>
 
         passwordInput.insertAdjacentElement("afterend", Api.Elements.error(response.errors.password.error));
     }
-
-    console.log(response);
+    else
+    {
+        form.reset();
+    }
 
     submitButton.disabled = false;
 });
