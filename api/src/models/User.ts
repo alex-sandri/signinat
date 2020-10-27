@@ -26,7 +26,7 @@ export class User
 
     static create = async (data: ApiRequest.Users.Create): Promise<User> =>
     {
-        // TODO: Check that a user with the same email has not been created
+        if (await User.exists(data.email)) throw new Error("user/already-exists");
 
         data.password = bcrypt.hashSync(data.password, 15);
 
@@ -55,4 +55,15 @@ export class User
     }
 
     static delete = async (id: string): Promise<void> => { await db.collection("users").doc(id).delete(); }
+
+    static withEmail = async (email: string): Promise<User | null> =>
+    {
+        const user = (await db.collection("users").where("email", "==", email).limit(1).get()).docs[0];
+
+        if (user === null) return null;
+
+        return User.retrieve(user.id);
+    }
+
+    static exists = async (email: string): Promise<boolean> => (await User.withEmail(email)) !== null;
 }
