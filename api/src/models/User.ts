@@ -26,6 +26,8 @@ export class User
 
     static create = async (data: ApiRequest.Users.Create): Promise<User> =>
     {
+        User.validate(data);
+
         if (await User.exists(data.email)) throw new Error("user/already-exists");
 
         data.password = bcrypt.hashSync(data.password, 15);

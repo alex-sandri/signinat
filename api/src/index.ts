@@ -32,23 +32,23 @@ app.post("/api/users", async (req, res) =>
     },
   };
 
-  if (user.name.first.length === 0) response.errors.name.first.error = "empty";
+  try
+  {
+    await User.create(user);
+  }
+  catch (e)
+  {
+    const { message } = (e as Error);
 
-  if (user.name.last.length === 0) response.errors.name.last.error = "empty";
-
-  if (user.email.length === 0) response.errors.email.error = "empty";
-
-  if (user.password.length === 0) response.errors.password.error = "empty";
-  else if (user.password.length < 8) response.errors.password.error = "weak";
-
-  if (
-    response.errors.name.first.error.length > 0
-    || response.errors.name.last.error.length > 0
-    || response.errors.email.error.length > 0
-    || response.errors.password.error.length > 0
-  ) response.result.valid = false;
-
-  if (response.result.valid) await User.create(user);
+    switch (message)
+    {
+      case "user/name/first/empty": response.errors.name.first.error = "empty"; break;
+      case "user/name/last/empty": response.errors.name.last.error = "empty"; break;
+      case "user/email/empty": response.errors.email.error = "empty"; break;
+      case "user/password/empty": response.errors.password.error = "empty"; break;
+      case "user/password/weak": response.errors.password.error = "weak"; break;
+    }
+  }
 
   res.send(response);
 });
