@@ -25,6 +25,8 @@ export class User
 
     static create = async (data: ApiRequest.Users.Create): Promise<User> =>
     {
+        // TODO: Check that a user with the same email has not been created
+
         // TODO: Encrypt password
 
         const user = await db.collection("users").add(data);
