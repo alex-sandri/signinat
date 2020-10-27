@@ -4,6 +4,7 @@ import * as cors from "cors";
 
 import { ApiRequest } from "./typings/ApiRequest";
 import { ApiResponse } from "./typings/ApiResponse";
+import { User } from "./models/User";
 
 const serviceAccount = require("./service-account.json");
 
@@ -12,15 +13,13 @@ admin.initializeApp({
   databaseURL: "https://sign-in-at.firebaseio.com",
 });
 
-const db = admin.firestore();
-
 const app = express();
 
 app.use(cors());
 
 app.use(express.json());
 
-app.post("/api/users", (req, res) =>
+app.post("/api/users", async (req, res) =>
 {
   const user: ApiRequest.Users.Create = req.body;
 
@@ -49,7 +48,7 @@ app.post("/api/users", (req, res) =>
     || response.errors.password.error.length > 0
   ) response.result.valid = false;
 
-  if (response.result.valid) db.collection("users").add(user);
+  if (response.result.valid) await User.create(user);
 
   res.send(response);
 });
