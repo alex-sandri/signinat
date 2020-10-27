@@ -2,16 +2,16 @@ import * as admin from "firebase-admin";
 import * as express from "express";
 import * as cors from "cors";
 
-import { ApiRequest } from "./typings/ApiRequest";
-import { ApiResponse } from "./typings/ApiResponse";
-import { User } from "./models/User";
-
 const serviceAccount = require("./service-account.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://sign-in-at.firebaseio.com",
 });
+
+import { ApiRequest } from "./typings/ApiRequest";
+import { ApiResponse } from "./typings/ApiResponse";
+import { User } from "./models/User";
 
 const app = express();
 
