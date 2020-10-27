@@ -66,4 +66,19 @@ export class User
     }
 
     static exists = async (email: string): Promise<boolean> => (await User.withEmail(email)) !== null;
+
+    /**
+     * @throws `Error` if data is not valid
+     */
+    static validate = (data: ApiRequest.Users.Create): void =>
+    {
+        if (data.name.first.length === 0) throw new Error("user/name/first/empty");
+
+        if (data.name.last.length === 0) throw new Error("user/name/last/empty");
+
+        if (data.email.length === 0) throw new Error("user/email/empty");
+
+        if (data.password.length === 0) throw new Error("user/password/empty");
+        else if (data.password.length < 8) throw new Error("user/password/weak");
+    }
 }
