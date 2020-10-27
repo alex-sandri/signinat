@@ -1,4 +1,5 @@
 import { firestore } from "firebase-admin";
+import * as bcrypt from "bcrypt";
 
 import { ApiRequest } from "../typings/ApiRequest";
 
@@ -27,7 +28,7 @@ export class User
     {
         // TODO: Check that a user with the same email has not been created
 
-        // TODO: Encrypt password
+        data.password = bcrypt.hashSync(data.password, 15);
 
         const user = await db.collection("users").add(data);
 
