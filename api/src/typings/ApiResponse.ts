@@ -8,6 +8,9 @@ export namespace ApiResponse
                 valid: boolean,
             },
             errors: {
+                user: {
+                    error: string,
+                },
                 name: {
                     first: {
                         error: string,

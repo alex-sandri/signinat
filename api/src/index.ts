@@ -26,6 +26,7 @@ app.post("/api/users", async (req, res) =>
   const response: ApiResponse.Users.Create = {
     result: { valid: true },
     errors: {
+      user: { error: "" },
       name: { first: { error: "" }, last: { error: "" } },
       email: { error: "" },
       password: { error: "" },
@@ -44,6 +45,7 @@ app.post("/api/users", async (req, res) =>
 
     switch (message)
     {
+      case "user/already-exists": response.errors.user.error = "already-exists"; break;
       case "user/name/first/empty": response.errors.name.first.error = "empty"; break;
       case "user/name/last/empty": response.errors.name.last.error = "empty"; break;
       case "user/email/empty": response.errors.email.error = "empty"; break;
