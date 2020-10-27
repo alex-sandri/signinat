@@ -5,8 +5,11 @@ import * as cors from "cors";
 import { ApiRequest } from "./typings/ApiRequest";
 import { ApiResponse } from "./typings/ApiResponse";
 
+const serviceAccount = require("./service-account.json");
+
 admin.initializeApp({
-  // TODO
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://sign-in-at.firebaseio.com",
 });
 
 const db = admin.firestore();
