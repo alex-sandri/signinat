@@ -42,9 +42,11 @@ export class User
         );
     }
 
-    static retrieve = async (id: string): Promise<User> =>
+    static retrieve = async (id: string): Promise<User | null> =>
     {
         const user = await db.collection("users").doc(id).get();
+
+        if (user === null) return null;
 
         const data = user.data() as IUser;
 
