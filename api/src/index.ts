@@ -12,6 +12,7 @@ admin.initializeApp({
 import { ApiRequest } from "./typings/ApiRequest";
 import { ApiResponse } from "./typings/ApiResponse";
 import { User } from "./models/User";
+import { Session } from "./models/Session";
 
 const app = express();
 
@@ -57,7 +58,7 @@ app.post("/api/users", async (req, res) =>
   res.send(response);
 });
 
-app.post("/api/sessions", (req, res) =>
+app.post("/api/sessions", async (req, res) =>
 {
   const credentials: ApiRequest.Sessions.Create = req.body;
 
@@ -69,13 +70,24 @@ app.post("/api/sessions", (req, res) =>
     },
   };
 
-  if (credentials.email.length === 0) response.errors.email.error = "empty";
+  try
+  {
+    await Session.create(credentials);
+  }
+  catch (e)
+  {
+    const { message } = (e as Error);
 
-  if (credentials.password.length === 0) response.errors.password.error = "empty";
+    response.result.valid = false;
 
-  if (response.errors.email.error.length > 0
-    || response.errors.password.error.length > 0
-  ) response.result.valid = false;
+    switch (message)
+    {
+      case "user/email/empty": response.errors.email.error = "empty"; break;
+      case "user/email/inexistent": response.errors.email.error = "inexistent"; break;
+      case "user/password/empty": response.errors.password.error = "empty"; break;
+      case "user/password/wrong": response.errors.password.error = "wrong"; break;
+    }
+  }
 
   res.send(response);
 });

@@ -19,6 +19,10 @@ export class Session
 
     static create = async (data: ApiRequest.Sessions.Create): Promise<Session> =>
     {
+        if (data.email.length === 0) throw new Error("user/email/empty");
+
+        if (data.password.length === 0) throw new Error("user/password/empty");
+
         // TODO
     }
 
