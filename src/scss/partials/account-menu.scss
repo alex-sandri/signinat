@@ -31,6 +31,14 @@
         margin-bottom: 45px;
     }
 
+    a
+    {
+        display: block;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    a,
     button
     {
         width: 100%;
@@ -42,5 +50,17 @@
         border-radius: 5px;
         border: none;
         font-size: medium;
+        margin-top: 15px;
+        transition: 300ms;
+
+        &:hover
+        {
+            opacity: 0.8;
+        }
+    }
+
+    button:last-of-type
+    {
+        margin-top: 45px;
     }
 }
