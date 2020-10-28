@@ -6,6 +6,7 @@ module.exports = [
             main: path.resolve(__dirname, "src/ts/main.ts"),
             signup: path.resolve(__dirname, "src/ts/signup.ts"),
             signin: path.resolve(__dirname, "src/ts/signin.ts"),
+            account: path.resolve(__dirname, "src/ts/account.ts"),
         },
         module: {
             rules: [
