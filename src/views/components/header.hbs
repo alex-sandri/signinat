@@ -1,8 +1,18 @@
 <header>
     <a href="/">SignInAt</a>
     <div class="center">
+        {{#if about}}
         <a href="/about">About</a>
+        {{/if}}
+        {{#if developers}}
         <a href="/developers">Developers</a>
+        {{/if}}
+        {{#if account}}
+        <a href="/account">Account</a>
+        {{/if}}
+        {{#if settings}}
+        <a href="/account/settings">Settings</a>
+        {{/if}}
     </div>
     <a href="/signin">Sign In</a>
 </header>

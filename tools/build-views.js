@@ -17,7 +17,7 @@ const VIEWS_PATH = path.join(__dirname, "..", "src", "views");
     if (!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
 });
 
-handlebars.registerPartial("header", handlebars.compile(fs.readFileSync(path.join(VIEWS_PATH, "components", "header.hbs")).toString("utf-8"))({}));
+handlebars.registerPartial("header", handlebars.compile(fs.readFileSync(path.join(VIEWS_PATH, "components", "header.hbs")).toString("utf-8")));
 
 fs.writeFileSync(path.join(PUBLIC_PATH, "index.html"), handlebars.compile(fs.readFileSync(path.join(VIEWS_PATH, "index.hbs"), "utf8"))({}));
 
