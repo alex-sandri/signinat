@@ -91,4 +91,13 @@ app.post("/api/sessions", async (req, res) =>
   res.send(response);
 });
 
+app.delete("/api/sessions/:id", async (req, res) =>
+{
+  const id = req.params.id;
+
+  await Session.delete(id);
+
+  res.sendStatus(200);
+});
+
 app.listen(3000);
