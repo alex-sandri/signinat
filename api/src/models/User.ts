@@ -65,9 +65,11 @@ export class User
 
     static withEmail = async (email: string): Promise<User | null> =>
     {
-        const user = (await db.collection("users").where("email", "==", email).limit(1).get()).docs[0];
+        const result = (await db.collection("users").where("email", "==", email).limit(1).get());
 
-        if (!user.exists) return null;
+        if (result.empty) return null;
+
+        const user = result.docs[0];
 
         return User.retrieve(user.id);
     }
