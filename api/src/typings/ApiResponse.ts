@@ -1,3 +1,6 @@
+import { Session } from "../models/Session";
+import { User } from "../models/User";
+
 export namespace ApiResponse
 {
     export namespace Users
@@ -6,6 +9,7 @@ export namespace ApiResponse
         {
             result: {
                 valid: boolean,
+                data?: User,
             },
             errors: {
                 name: {
@@ -32,6 +36,7 @@ export namespace ApiResponse
         {
             result: {
                 valid: boolean,
+                data?: Session,
             },
             errors: {
                 email: {

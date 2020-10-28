@@ -24,7 +24,7 @@ app.use(express.json());
 
 app.post("/api/users", async (req, res) =>
 {
-  const user: ApiRequest.Users.Create = req.body;
+  const data: ApiRequest.Users.Create = req.body;
 
   const response: ApiResponse.Users.Create = {
     result: { valid: true },
@@ -37,7 +37,9 @@ app.post("/api/users", async (req, res) =>
 
   try
   {
-    await User.create(user);
+    const user = await User.create(data);
+
+    response.result.data = user;
   }
   catch (e)
   {
@@ -71,7 +73,7 @@ app.get("/api/sessions/:id", async (req, res) =>
 
 app.post("/api/sessions", async (req, res) =>
 {
-  const credentials: ApiRequest.Sessions.Create = req.body;
+  const data: ApiRequest.Sessions.Create = req.body;
 
   const response: ApiResponse.Sessions.Create = {
     result: { valid: true },
@@ -83,7 +85,9 @@ app.post("/api/sessions", async (req, res) =>
 
   try
   {
-    await Session.create(credentials);
+    const session = await Session.create(data);
+
+    response.result.data = session;
   }
   catch (e)
   {
