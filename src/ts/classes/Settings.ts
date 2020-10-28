@@ -6,5 +6,7 @@ export class Settings
 
     static delete = (key: string) => localStorage.removeItem(key);
 
+    static exists = (key: string): boolean => Settings.get(key) !== null;
+
     static clear = () => localStorage.clear();
 }
