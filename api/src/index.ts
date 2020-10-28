@@ -57,6 +57,16 @@ app.post("/api/users", async (req, res) =>
   res.send(response);
 });
 
+app.get("/api/sessions/:id", async (req, res) =>
+{
+  const id = req.params.id;
+
+  const session = await Session.retrieve(id);
+
+  if (!session) res.sendStatus(404);
+  else res.send(session);
+});
+
 app.post("/api/sessions", async (req, res) =>
 {
   const credentials: ApiRequest.Sessions.Create = req.body;
