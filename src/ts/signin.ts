@@ -30,8 +30,6 @@ form.addEventListener("submit", async e =>
     }
     else
     {
-        form.reset();
-
         Settings.set("session", (response.result.data as Session).id);
 
         location.href = "/account";
