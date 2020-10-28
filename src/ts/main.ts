@@ -18,9 +18,16 @@ if (Settings.exists("session"))
 
 document.documentElement.setAttribute("signed-in", Settings.exists("session").toString());
 
-const signOutButton = document.querySelector("#sign-out") as HTMLButtonElement;
+const accountMenuContainer = document.getElementById("account-menu-container") as HTMLElement;
 
-signOutButton.addEventListener("click", async () =>
+document.querySelector("#open-account-menu")?.addEventListener("click", () => { accountMenuContainer.style.display = "block"; });
+
+accountMenuContainer.addEventListener("click", e =>
+{
+    if (e.target === accountMenuContainer) accountMenuContainer.style.display = "none";
+});
+
+document.querySelector("#sign-out")?.addEventListener("click", async () =>
 {
     await Api.Sessions.delete(Settings.get("session") as string);
 
