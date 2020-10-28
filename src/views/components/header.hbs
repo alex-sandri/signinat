@@ -15,12 +15,10 @@
         {{/if}}
     </div>
     {{#if signin}}
-    <a href="/signin">Sign In</a>
+    <a class="signed-out right" href="/signin">Sign In</a>
     {{/if}}
     {{#if signup}}
-    <a href="/signup">Sign Up</a>
+    <a class="signed-out right" href="/signup">Sign Up</a>
     {{/if}}
-    {{#if signout}}
-    <button id="sign-out">Sign Out</button>
-    {{/if}}
+    <button class="signed-in right" id="sign-out">Sign Out</button>
 </header>

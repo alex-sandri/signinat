@@ -30,15 +30,14 @@ header
         }
     }
 
-    > button:last-child
+    button.right
     {
         cursor: pointer;
         border: none;
         font-family: inherit;
     }
 
-    > a:last-child,
-    > button:last-child
+    .right
     {
         color: $primary-color;
         background-color: $secondary-color;

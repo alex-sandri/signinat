@@ -13,6 +13,15 @@ $secondary-color: white;
     box-sizing: border-box;
 }
 
+html
+{
+    &:not([signed-in=false]) .signed-out,
+    &:not([signed-in=true]) .signed-in
+    {
+        display: none;
+    }
+}
+
 body
 {
     display: grid;
