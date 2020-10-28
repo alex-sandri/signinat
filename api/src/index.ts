@@ -1,6 +1,7 @@
 import * as admin from "firebase-admin";
 import * as express from "express";
 import * as cors from "cors";
+import * as helmet from "helmet";
 
 const serviceAccount = require("./service-account.json");
 
@@ -17,6 +18,7 @@ import { Session } from "./models/Session";
 const app = express();
 
 app.use(cors());
+app.use(helmet());
 
 app.use(express.json());
 
