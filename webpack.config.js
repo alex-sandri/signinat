@@ -7,6 +7,7 @@ module.exports = [
             signup: path.resolve(__dirname, "src/ts/signup.ts"),
             signin: path.resolve(__dirname, "src/ts/signin.ts"),
             account: path.resolve(__dirname, "src/ts/account.ts"),
+            settings: path.resolve(__dirname, "src/ts/settings.ts"),
         },
         module: {
             rules: [
