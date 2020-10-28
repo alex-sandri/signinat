@@ -11,9 +11,36 @@
 
 #account-menu
 {
+    padding: 15px;
     position: absolute;
     right: 0;
     height: 100%;
+    color: $secondary-color;
     background-color: $primary-color;
     width: min(100%, 400px);
+
+    h1,
+    p
+    {
+        margin: 0;
+    }
+
+    p
+    {
+        font-weight: 200;
+        margin-bottom: 45px;
+    }
+
+    button
+    {
+        width: 100%;
+        color: $primary-color;
+        background-color: $secondary-color;
+        padding: 10px;
+        cursor: pointer;
+        font-family: inherit;
+        border-radius: 5px;
+        border: none;
+        font-size: medium;
+    }
 }
