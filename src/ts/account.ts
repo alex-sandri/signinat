@@ -5,14 +5,14 @@ const signOutButton = document.querySelector("#sign-out") as HTMLButtonElement;
 
 signOutButton.addEventListener("click", async () =>
 {
-    await Api.Sessions.delete(/* TODO */);
+    await Api.Sessions.delete(Settings.get("session") as string);
 
     Settings.delete("session");
 
     location.href = "/";
 });
 
-Api.Sessions.retrieve(Settings.get("session")).then(session =>
+Api.Sessions.retrieve(Settings.get("session") as string).then(session =>
 {
-    // TODO
+    console.log(session);
 });

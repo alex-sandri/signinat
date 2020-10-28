@@ -1,3 +1,4 @@
+import { Session } from "../../../api/src/models/Session";
 import { ApiRequest } from "../../../api/src/typings/ApiRequest";
 import { ApiResponse } from "../../../api/src/typings/ApiResponse";
 
@@ -90,6 +91,20 @@ export namespace Api
                 },
                 body: JSON.stringify(data)
             });
+
+            return response.json();
+        }
+
+        static retrieve = async (id: string): Promise<Session> =>
+        {
+            const response = await fetch(`${Sessions.ENDPOINT}/${id}`);
+
+            return response.json();
+        }
+
+        static delete = async (id: string): Promise<Session> =>
+        {
+            const response = await fetch(`${Sessions.ENDPOINT}/${id}`, { method: "DELETE" });
 
             return response.json();
         }
