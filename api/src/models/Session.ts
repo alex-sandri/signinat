@@ -42,7 +42,7 @@ export class Session
     {
         const session = await db.collection("sessions").doc(id).get();
 
-        if (!session) return null;
+        if (!session.exists) return null;
 
         const data = session.data() as ISession;
 

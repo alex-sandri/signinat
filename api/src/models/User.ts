@@ -48,7 +48,7 @@ export class User
     {
         const user = await db.collection("users").doc(id).get();
 
-        if (!user) return null;
+        if (!user.exists) return null;
 
         const data = user.data() as IUser;
 
@@ -67,7 +67,7 @@ export class User
     {
         const user = (await db.collection("users").where("email", "==", email).limit(1).get()).docs[0];
 
-        if (!user) return null;
+        if (!user.exists) return null;
 
         return User.retrieve(user.id);
     }
