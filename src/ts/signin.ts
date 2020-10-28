@@ -33,6 +33,8 @@ form.addEventListener("submit", async e =>
         form.reset();
 
         Settings.set("session", (response.result.data as Session).id);
+
+        location.href = "/account";
     }
 
     submitButton.disabled = false;
