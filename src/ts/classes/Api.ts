@@ -102,11 +102,6 @@ export namespace Api
             return response.json();
         }
 
-        static delete = async (id: string): Promise<Session> =>
-        {
-            const response = await fetch(`${Sessions.ENDPOINT}/${id}`, { method: "DELETE" });
-
-            return response.json();
-        }
+        static delete = async (id: string): Promise<void> => { await fetch(`${Sessions.ENDPOINT}/${id}`, { method: "DELETE" }); }
     }
 }
