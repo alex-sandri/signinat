@@ -1,4 +1,6 @@
+import { Session } from "../../api/src/models/Session";
 import { Api } from "./classes/Api";
+import { Settings } from "./classes/Settings";
 
 const form = document.querySelector("form") as HTMLFormElement;
 
@@ -29,6 +31,8 @@ form.addEventListener("submit", async e =>
     else
     {
         form.reset();
+
+        Settings.set("session", (response.result.data as Session).id);
     }
 
     submitButton.disabled = false;
