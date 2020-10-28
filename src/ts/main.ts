@@ -22,7 +22,7 @@ const accountMenuContainer = document.getElementById("account-menu-container") a
 
 document.querySelector("#open-account-menu")?.addEventListener("click", () => { accountMenuContainer.style.display = "block"; });
 
-accountMenuContainer.addEventListener("click", e =>
+accountMenuContainer?.addEventListener("click", e =>
 {
     if (e.target === accountMenuContainer) accountMenuContainer.style.display = "none";
 });
