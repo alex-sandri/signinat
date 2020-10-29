@@ -30,7 +30,8 @@ module.exports = [
     },
     {
         entry: {
-            bundle: path.resolve(__dirname, "src/scss/main.scss"),
+            main: path.resolve(__dirname, "src/scss/main.scss"),
+            signup: path.resolve(__dirname, "src/scss/signup.scss"),
         },
         output: {
             filename: "[name].style.js",

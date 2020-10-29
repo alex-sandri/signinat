@@ -1,13 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&display=swap");
 
-$primary-color: #a30b37;
-$secondary-color: white;
+@import "partials/variables.scss";
 
 @import "partials/account.scss";
 @import "partials/account-menu.scss";
 @import "partials/header.scss";
 @import "partials/settings.scss";
-@import "partials/signup.scss";
 
 *
 {

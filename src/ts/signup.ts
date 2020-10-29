@@ -4,7 +4,7 @@ import { Api } from "./classes/Api";
 
 const form = document.querySelector("form") as HTMLFormElement;
 
-const accountTypeRadioButtons = form.querySelectorAll<HTMLInputElement>("input[type=radio]");
+const accountTypeRadioButtons = document.querySelectorAll<HTMLInputElement>("#account-type-choice input[type=radio]");
 
 const firstNameInput = form.querySelector("#first-name") as HTMLInputElement;
 const lastNameInput = form.querySelector("#last-name") as HTMLInputElement;
