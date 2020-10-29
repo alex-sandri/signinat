@@ -78,6 +78,24 @@ export namespace Api
         }
     }
 
+    export class Apps
+    {
+        static readonly ENDPOINT = `${BASE_ENDPOINT}/apps`;
+
+        static create = async (data: ApiRequest.Apps.Create): Promise<ApiResponse.Apps.Create> =>
+        {
+            const response = await fetch(Apps.ENDPOINT, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            });
+
+            return response.json();
+        }
+    }
+
     export class Sessions
     {
         static readonly ENDPOINT = `${BASE_ENDPOINT}/sessions`;
