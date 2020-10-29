@@ -44,14 +44,14 @@ export class App
     {
         App.validate(data);
 
-        if (await App.exists(data.email)) throw new ApiError("user/email/already-exists");
+        if (await App.exists(data.email)) throw new ApiError("app/email/already-exists");
 
         data.password = bcrypt.hashSync(data.password, 15);
 
-        const user = await db.collection("apps").add(<IApp>data);
+        const app = await db.collection("apps").add(<IApp>data);
 
         return new App(
-            user.id,
+            app.id,
             data.name,
             data.url,
             data.email,
@@ -61,11 +61,11 @@ export class App
 
     static retrieve = async (id: string): Promise<App | null> =>
     {
-        const user = await db.collection("apps").doc(id).get();
+        const app = await db.collection("apps").doc(id).get();
 
-        if (!user.exists) return null;
+        if (!app.exists) return null;
 
-        const data = user.data() as IApp;
+        const data = app.data() as IApp;
 
         return new App(
             id,
@@ -84,9 +84,9 @@ export class App
 
         if (result.empty) return null;
 
-        const user = result.docs[0];
+        const app = result.docs[0];
 
-        return App.retrieve(user.id);
+        return App.retrieve(app.id);
     }
 
     static exists = async (email: string): Promise<boolean> => (await App.withEmail(email)) !== null;
