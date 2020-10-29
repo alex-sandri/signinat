@@ -90,7 +90,7 @@ appForm.addEventListener("submit", async e =>
         name: appNameInput.value.trim(),
         url: appUrlInput.value.trim(),
         email: emailInput.value.trim(),
-        password: passwordInput.value,
+        password: appPasswordInput.value,
     });
 
     if (!response.result.valid)
