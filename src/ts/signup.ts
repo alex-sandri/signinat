@@ -89,7 +89,7 @@ appForm.addEventListener("submit", async e =>
     const response = await Api.Apps.create({
         name: appNameInput.value.trim(),
         url: appUrlInput.value.trim(),
-        email: emailInput.value.trim(),
+        email: appEmailInput.value.trim(),
         password: appPasswordInput.value,
     });
 
