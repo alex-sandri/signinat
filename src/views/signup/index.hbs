@@ -11,6 +11,17 @@
     <main>
         <form action="" method="post">
             <h1>Sign Up</h1>
+            <fieldset>
+                <legend>Choose account type</legend>
+                <label for="account-type-user">
+                    User
+                    <input type="radio" name="account-type" id="account-type-user" checked>
+                </label>
+                <label for="account-type-app">
+                    App
+                    <input type="radio" name="account-type" id="account-type-app">
+                </label>
+            </fieldset>
             <label for="first-name">
                 First Name
                 <input type="text" id="first-name" name="first-name" autocomplete="given-name" required>
