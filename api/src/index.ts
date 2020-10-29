@@ -12,6 +12,7 @@ admin.initializeApp({
 
 import { ApiRequest } from "./typings/ApiRequest";
 import { ApiResponse } from "./typings/ApiResponse";
+import { ApiError } from "./models/ApiError";
 import { User } from "./models/User";
 import { Session } from "./models/Session";
 
@@ -43,18 +44,18 @@ app.post("/api/users", async (req, res) =>
   }
   catch (e)
   {
-    const { message } = (e as Error);
+    const { id, message } = e as ApiError;
 
     response.result.valid = false;
 
-    switch (message)
+    switch (id)
     {
-      case "user/name/first/empty": response.errors.name.first.error = "empty"; break;
-      case "user/name/last/empty": response.errors.name.last.error = "empty"; break;
-      case "user/email/empty": response.errors.email.error = "empty"; break;
-      case "user/email/already-exists": response.errors.email.error = "already-exists"; break;
-      case "user/password/empty": response.errors.password.error = "empty"; break;
-      case "user/password/weak": response.errors.password.error = "weak"; break;
+      case "user/name/first/empty": response.errors.name.first.error = message; break;
+      case "user/name/last/empty": response.errors.name.last.error = message; break;
+      case "user/email/empty": response.errors.email.error = message; break;
+      case "user/email/already-exists": response.errors.email.error = message; break;
+      case "user/password/empty": response.errors.password.error = message; break;
+      case "user/password/weak": response.errors.password.error = message; break;
     }
   }
 
@@ -91,16 +92,16 @@ app.post("/api/sessions", async (req, res) =>
   }
   catch (e)
   {
-    const { message } = (e as Error);
+    const { id, message } = e as ApiError;
 
     response.result.valid = false;
 
-    switch (message)
+    switch (id)
     {
-      case "user/email/empty": response.errors.email.error = "empty"; break;
-      case "user/email/inexistent": response.errors.email.error = "inexistent"; break;
-      case "user/password/empty": response.errors.password.error = "empty"; break;
-      case "user/password/wrong": response.errors.password.error = "wrong"; break;
+      case "user/email/empty": response.errors.email.error = message; break;
+      case "user/email/inexistent": response.errors.email.error = message; break;
+      case "user/password/empty": response.errors.password.error = message; break;
+      case "user/password/wrong": response.errors.password.error = message; break;
     }
   }
 
