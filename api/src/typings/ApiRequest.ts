@@ -21,4 +21,15 @@ export namespace ApiRequest
             password: string,
         }
     }
+
+    export namespace Apps
+    {
+        export interface Create
+        {
+            name: string,
+            url: string,
+            email: string,
+            password: string,
+        }
+    }
 }

@@ -13,6 +13,7 @@ admin.initializeApp({
 import { ApiRequest } from "./typings/ApiRequest";
 import { ApiResponse } from "./typings/ApiResponse";
 import { ApiError } from "./models/ApiError";
+import { App } from "./models/App";
 import { User } from "./models/User";
 import { Session } from "./models/Session";
 
@@ -56,6 +57,45 @@ app.post("/api/users", async (req, res) =>
       case "user/email/already-exists": response.errors.email.error = message; break;
       case "user/password/empty": response.errors.password.error = message; break;
       case "user/password/weak": response.errors.password.error = message; break;
+    }
+  }
+
+  res.send(response);
+});
+
+app.post("/api/apps", async (req, res) =>
+{
+  const data: ApiRequest.Apps.Create = req.body;
+
+  const response: ApiResponse.Apps.Create = {
+    result: { valid: true },
+    errors: {
+      name: { error: "" },
+      url: { error: ""},
+      email: { error: "" },
+      password: { error: "" },
+    },
+  };
+
+  try
+  {
+    const app = await App.create(data);
+
+    response.result.data = app.json();
+  }
+  catch (e)
+  {
+    const { id, message } = e as ApiError;
+
+    response.result.valid = false;
+
+    switch (id)
+    {
+      case "app/name/empty": response.errors.name.error = message; break;
+      case "app/email/empty": response.errors.email.error = message; break;
+      case "app/email/already-exists": response.errors.email.error = message; break;
+      case "app/password/empty": response.errors.password.error = message; break;
+      case "app/password/weak": response.errors.password.error = message; break;
     }
   }
 

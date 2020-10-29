@@ -1,3 +1,4 @@
+import { ISerializedApp } from "../models/App";
 import { ISerializedSession } from "../models/Session";
 import { ISerializedUser } from "../models/User";
 
@@ -39,6 +40,31 @@ export namespace ApiResponse
                 data?: ISerializedSession,
             },
             errors: {
+                email: {
+                    error: string,
+                },
+                password: {
+                    error: string,
+                },
+            },
+        }
+    }
+
+    export namespace Apps
+    {
+        export interface Create
+        {
+            result: {
+                valid: boolean,
+                data?: ISerializedApp,
+            },
+            errors: {
+                name: {
+                    error: string,
+                },
+                url: {
+                    error: string,
+                },
                 email: {
                     error: string,
                 },
