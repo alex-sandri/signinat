@@ -2,7 +2,7 @@ import { firestore } from "firebase-admin";
 import * as bcrypt from "bcrypt";
 
 import { ApiRequest } from "../typings/ApiRequest";
-import { User } from "./User";
+import { ISerializedUser, User } from "./User";
 
 const db = firestore();
 
@@ -11,12 +11,24 @@ interface ISession
     user: string
 }
 
+export interface ISerializedSession
+{
+    id: string,
+    user: ISerializedUser,
+}
+
 export class Session
 {
     private constructor(
         public id: string,
         public user: User,
     ) {}
+
+    public json = (): ISerializedSession =>
+    ({
+        id: this.id,
+        user: this.user.json(),
+    });
 
     static create = async (data: ApiRequest.Sessions.Create): Promise<Session> =>
     {

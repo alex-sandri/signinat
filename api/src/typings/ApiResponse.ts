@@ -1,5 +1,5 @@
-import { Session } from "../models/Session";
-import { User } from "../models/User";
+import { ISerializedSession } from "../models/Session";
+import { ISerializedUser } from "../models/User";
 
 export namespace ApiResponse
 {
@@ -9,7 +9,7 @@ export namespace ApiResponse
         {
             result: {
                 valid: boolean,
-                data?: User,
+                data?: ISerializedUser,
             },
             errors: {
                 name: {
@@ -36,7 +36,7 @@ export namespace ApiResponse
         {
             result: {
                 valid: boolean,
-                data?: Session,
+                data?: ISerializedSession,
             },
             errors: {
                 email: {

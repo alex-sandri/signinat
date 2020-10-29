@@ -15,15 +15,35 @@ interface IUser
     password: string,
 }
 
+export interface ISerializedUser
+{
+    id: string,
+    name: {
+        first: string,
+        last: string,
+    },
+    email: string,
+}
+
 export class User
 {
     private constructor(
-        public id: string,
-        public firstName: string,
-        public lastName: string,
-        public email: string,
-        public password: string,
+        public readonly id: string,
+        public readonly firstName: string,
+        public readonly lastName: string,
+        public readonly email: string,
+        public readonly password: string,
     ) {}
+
+    public json = (): ISerializedUser =>
+    ({
+        id: this.id,
+        name: {
+            first: this.firstName,
+            last: this.lastName,
+        },
+        email: this.email,
+    });
 
     static create = async (data: ApiRequest.Users.Create): Promise<User> =>
     {

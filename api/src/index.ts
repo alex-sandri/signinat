@@ -39,7 +39,7 @@ app.post("/api/users", async (req, res) =>
   {
     const user = await User.create(data);
 
-    response.result.data = user;
+    response.result.data = user.json();
   }
   catch (e)
   {
@@ -68,7 +68,7 @@ app.get("/api/sessions/:id", async (req, res) =>
   const session = await Session.retrieve(id);
 
   if (!session) res.sendStatus(404);
-  else res.send(session);
+  else res.send(session.json());
 });
 
 app.post("/api/sessions", async (req, res) =>
@@ -87,7 +87,7 @@ app.post("/api/sessions", async (req, res) =>
   {
     const session = await Session.create(data);
 
-    response.result.data = session;
+    response.result.data = session.json();
   }
   catch (e)
   {
