@@ -9,7 +9,7 @@
 <body>
     {{> header signin=true }}
     <main>
-        <form action="" method="post">
+        <form>
             <h1>Sign Up</h1>
             <fieldset>
                 <legend>Choose account type</legend>
@@ -40,8 +40,23 @@
                     <input type="password" id="password" name="password" autocomplete="new-password" required>
                 </label>
             </div>
-            <div data-for-account-type="app">
-                
+            <div data-for-account-type="app" style="display: none;">
+                <label for="app-name">
+                    App Name
+                    <input type="text" id="app-name" name="name" required>
+                </label>
+                <label for="app-url">
+                    URL
+                    <input type="url" id="app-url" name="url" required>
+                </label>
+                <label for="app-email">
+                    Email
+                    <input type="email" id="app-email" name="email" required>
+                </label>
+                <label for="app-password">
+                    Password
+                    <input type="password" id="app-password" name="password" autocomplete="new-password" required>
+                </label>
             </div>
             <button type="submit">Sign Up</button>
         </form>
