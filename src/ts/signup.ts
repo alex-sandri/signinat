@@ -4,12 +4,23 @@ import { Api } from "./classes/Api";
 
 const form = document.querySelector("form") as HTMLFormElement;
 
+const accountTypeRadioButtons = form.querySelectorAll<HTMLInputElement>("input[type=radio]");
+
 const firstNameInput = form.querySelector("#first-name") as HTMLInputElement;
 const lastNameInput = form.querySelector("#last-name") as HTMLInputElement;
 const emailInput = form.querySelector("#email") as HTMLInputElement;
 const passwordInput = form.querySelector("#password") as HTMLInputElement;
 
 const submitButton = form.querySelector("button[type=submit]") as HTMLButtonElement;
+
+accountTypeRadioButtons.forEach(radioButton => radioButton.addEventListener("change", e =>
+{
+    const accountType = (e.target as HTMLInputElement).getAttribute("data-account-type");
+
+    document.querySelectorAll<HTMLElement>(`[data-for-account-type]`).forEach(element => element.style.display = "none");
+
+    (document.querySelector(`[data-for-account-type=${accountType}]`) as HTMLElement).style.display = "block";
+}));
 
 passwordInput.addEventListener("input", e =>
 {

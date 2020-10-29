@@ -15,14 +15,14 @@
                 <legend>Choose account type</legend>
                 <label for="account-type-user">
                     User
-                    <input type="radio" name="account-type" id="account-type-user" checked>
+                    <input type="radio" name="account-type" id="account-type-user" data-account-type="user" checked>
                 </label>
                 <label for="account-type-app">
                     App
-                    <input type="radio" name="account-type" id="account-type-app">
+                    <input type="radio" name="account-type" id="account-type-app" data-account-type="app">
                 </label>
             </fieldset>
-            <div data-account-type="user">
+            <div data-for-account-type="user">
                 <label for="first-name">
                     First Name
                     <input type="text" id="first-name" name="first-name" autocomplete="given-name" required>
@@ -40,7 +40,7 @@
                     <input type="password" id="password" name="password" autocomplete="new-password" required>
                 </label>
             </div>
-            <div data-account-type="app">
+            <div data-for-account-type="app">
                 
             </div>
             <button type="submit">Sign Up</button>
