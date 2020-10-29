@@ -10,8 +10,8 @@ if (Settings.exists("session"))
 {
     Api.Sessions.retrieve(Settings.get("session") as string).then(session =>
     {
-        document.querySelectorAll<HTMLElement>(".first-name").forEach(element => element.innerText = session.user.firstName);
-        document.querySelectorAll<HTMLElement>(".last-name").forEach(element => element.innerText = session.user.lastName);
+        document.querySelectorAll<HTMLElement>(".first-name").forEach(element => element.innerText = session.user.name.first);
+        document.querySelectorAll<HTMLElement>(".last-name").forEach(element => element.innerText = session.user.name.last);
         document.querySelectorAll<HTMLElement>(".email").forEach(element => element.innerText = session.user.email);
     });
 }

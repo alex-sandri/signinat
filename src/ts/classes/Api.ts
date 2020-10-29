@@ -1,4 +1,4 @@
-import { Session } from "../../../api/src/models/Session";
+import { ISerializedSession } from "../../../api/src/models/Session";
 import { ApiRequest } from "../../../api/src/typings/ApiRequest";
 import { ApiResponse } from "../../../api/src/typings/ApiResponse";
 
@@ -95,7 +95,7 @@ export namespace Api
             return response.json();
         }
 
-        static retrieve = async (id: string): Promise<Session> =>
+        static retrieve = async (id: string): Promise<ISerializedSession> =>
         {
             const response = await fetch(`${Sessions.ENDPOINT}/${id}`);
 
