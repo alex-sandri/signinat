@@ -2,6 +2,7 @@ import { firestore } from "firebase-admin";
 import * as bcrypt from "bcrypt";
 
 import { ApiRequest } from "../typings/ApiRequest";
+import { ApiError } from "./ApiError";
 
 const db = firestore();
 
@@ -49,7 +50,7 @@ export class User
     {
         User.validate(data);
 
-        if (await User.exists(data.email)) throw new Error("user/email/already-exists");
+        if (await User.exists(data.email)) throw new ApiError("user/email/already-exists");
 
         data.password = bcrypt.hashSync(data.password, 15);
 
@@ -101,13 +102,13 @@ export class User
      */
     static validate = (data: ApiRequest.Users.Create): void =>
     {
-        if (data.name.first.length === 0) throw new Error("user/name/first/empty");
+        if (data.name.first.length === 0) throw new ApiError("user/name/first/empty");
 
-        if (data.name.last.length === 0) throw new Error("user/name/last/empty");
+        if (data.name.last.length === 0) throw new ApiError("user/name/last/empty");
 
-        if (data.email.length === 0) throw new Error("user/email/empty");
+        if (data.email.length === 0) throw new ApiError("user/email/empty");
 
-        if (data.password.length === 0) throw new Error("user/password/empty");
-        else if (data.password.length < 8) throw new Error("user/password/weak");
+        if (data.password.length === 0) throw new ApiError("user/password/empty");
+        else if (data.password.length < 8) throw new ApiError("user/password/weak");
     }
 }

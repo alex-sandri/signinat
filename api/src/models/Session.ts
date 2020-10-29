@@ -3,6 +3,7 @@ import * as bcrypt from "bcrypt";
 
 import { ApiRequest } from "../typings/ApiRequest";
 import { ISerializedUser, User } from "./User";
+import { ApiError } from "./ApiError";
 
 const db = firestore();
 
@@ -36,9 +37,9 @@ export class Session
 
         const user = await User.withEmail(data.email);
 
-        if (!user) throw new Error("user/email/inexistent");
+        if (!user) throw new ApiError("user/email/inexistent");
 
-        if (!bcrypt.compareSync(data.password, user.password)) throw new Error("user/password/wrong");
+        if (!bcrypt.compareSync(data.password, user.password)) throw new ApiError("user/password/wrong");
 
         const session = await db.collection("sessions").add(<ISession>{
             user: user.id,
@@ -73,8 +74,8 @@ export class Session
      */
     static validate = (data: ApiRequest.Sessions.Create): void =>
     {
-        if (data.email.length === 0) throw new Error("user/email/empty");
+        if (data.email.length === 0) throw new ApiError("user/email/empty");
 
-        if (data.password.length === 0) throw new Error("user/password/empty");
+        if (data.password.length === 0) throw new ApiError("user/password/empty");
     }
 }
