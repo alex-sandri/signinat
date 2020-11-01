@@ -12,6 +12,9 @@ interface IApp
     url: string,
     email: string,
     password: string,
+    api: {
+        key: string,
+    },
 }
 
 export interface ISerializedApp
