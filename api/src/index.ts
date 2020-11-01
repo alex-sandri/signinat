@@ -72,8 +72,6 @@ app.post("/api/apps", async (req, res) =>
     errors: {
       name: { error: "" },
       url: { error: ""},
-      email: { error: "" },
-      password: { error: "" },
     },
   };
 
@@ -92,10 +90,7 @@ app.post("/api/apps", async (req, res) =>
     switch (id)
     {
       case "app/name/empty": response.errors.name.error = message; break;
-      case "app/email/empty": response.errors.email.error = message; break;
-      case "app/email/already-exists": response.errors.email.error = message; break;
-      case "app/password/empty": response.errors.password.error = message; break;
-      case "app/password/weak": response.errors.password.error = message; break;
+      case "app/url/already-exists": response.errors.url.error = message; break;
     }
   }
 

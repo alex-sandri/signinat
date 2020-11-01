@@ -65,12 +65,6 @@ export namespace ApiResponse
                 url: {
                     error: string,
                 },
-                email: {
-                    error: string,
-                },
-                password: {
-                    error: string,
-                },
             },
         }
     }
