@@ -11,18 +11,7 @@
     {{> header signin=true }}
     <main>
         <h1>Sign Up</h1>
-        <fieldset id="account-type-choice">
-            <legend>Choose account type</legend>
-            <label for="account-type-user">
-                User
-                <input type="radio" name="account-type" id="account-type-user" data-account-type="user" checked>
-            </label>
-            <label for="account-type-app">
-                App
-                <input type="radio" name="account-type" id="account-type-app" data-account-type="app">
-            </label>
-        </fieldset>
-        <form data-for-account-type="user">
+        <form>
             <label for="first-name">
                 First Name
                 <input type="text" id="first-name" name="first-name" autocomplete="given-name" required>
@@ -38,25 +27,6 @@
             <label for="password">
                 Password
                 <input type="password" id="password" name="password" autocomplete="new-password" required>
-            </label>
-            <button type="submit">Sign Up</button>
-        </form>
-        <form data-for-account-type="app" style="display: none;">
-            <label for="app-name">
-                App Name
-                <input type="text" id="app-name" name="name" required>
-            </label>
-            <label for="app-url">
-                URL
-                <input type="url" id="app-url" name="url" required>
-            </label>
-            <label for="app-email">
-                Email
-                <input type="email" id="app-email" name="email" required>
-            </label>
-            <label for="app-password">
-                Password
-                <input type="password" id="app-password" name="password" autocomplete="new-password" required>
             </label>
             <button type="submit">Sign Up</button>
         </form>
