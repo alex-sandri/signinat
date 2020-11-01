@@ -1,5 +1,3 @@
-import * as express from "express";
-import * as bearerToken from "express-bearer-token";
 import { firestore } from "firebase-admin";
 import { v4 as uuidv4 } from "uuid";
 
