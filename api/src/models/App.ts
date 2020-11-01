@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { ApiRequest } from "../typings/ApiRequest";
 import { ApiError } from "./ApiError";
+import { ISerializedUser, User } from "./User";
 
 const db = firestore();
 
@@ -11,8 +12,7 @@ interface IApp
 {
     name: string,
     url: string,
-    email: string,
-    password: string,
+    owner: string,
     api: {
         key: string,
     },
@@ -23,7 +23,7 @@ export interface ISerializedApp
     id: string,
     name: string,
     url: string,
-    email: string,
+    owner: ISerializedUser,
 }
 
 export class App
@@ -32,8 +32,7 @@ export class App
         public readonly id: string,
         public readonly name: string,
         public readonly url: string,
-        public readonly email: string,
-        public readonly password: string,
+        public readonly owner: User,
     ) {}
 
     public json = (): ISerializedApp =>
@@ -41,7 +40,7 @@ export class App
         id: this.id,
         name: this.name,
         url: this.url,
-        email: this.email,
+        owner: this.owner.json(),
     });
 
     static create = async (data: ApiRequest.Apps.Create): Promise<App> =>
@@ -52,8 +51,19 @@ export class App
 
         data.password = bcrypt.hashSync(data.password, 15);
 
+        const owner = await User.create({
+            name: {
+                first: "",
+                last: "",
+            },
+            email: data.email,
+            password: data.password,
+        });
+
         const app = await db.collection("apps").add(<IApp>{
-            ...data,
+            name: data.name,
+            url: data.url,
+            owner: owner.id,
             api: {
                 key: uuidv4(),
             },
@@ -63,8 +73,7 @@ export class App
             app.id,
             data.name,
             data.url,
-            data.email,
-            data.password,
+            (await User.withEmail(data.email)) as User
         );
     }
 
@@ -80,8 +89,7 @@ export class App
             id,
             data.name,
             data.url,
-            data.email,
-            data.password,
+            (await User.retrieve(data.owner)) as User,
         );
     }
 
