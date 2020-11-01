@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { ApiRequest } from "../typings/ApiRequest";
 import { ApiError } from "./ApiError";
+import { Session } from "./Session";
 import { ISerializedUser, User } from "./User";
 
 const db = firestore();
@@ -48,19 +49,14 @@ export class App
 
         if (await App.exists(data.url)) throw new ApiError("app/url/already-exists");
 
-        const owner = await User.create({
-            name: {
-                first: "",
-                last: "",
-            },
-            email: data.email,
-            password: data.password,
-        });
+        const session = await Session.retrieve(token);
+
+        if (!session) throw new ApiError("session/inexistent");
 
         const app = await db.collection("apps").add(<IApp>{
             name: data.name,
             url: data.url,
-            owner: owner.id,
+            owner: session.user.id,
             api: {
                 key: uuidv4(),
             },
@@ -70,7 +66,7 @@ export class App
             app.id,
             data.name,
             data.url,
-            (await User.withEmail(data.email)) as User
+            session.user,
         );
     }
 
