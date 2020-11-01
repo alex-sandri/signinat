@@ -1,3 +1,5 @@
+import * as express from "express";
+import * as bearerToken from "express-bearer-token";
 import { firestore } from "firebase-admin";
 import { v4 as uuidv4 } from "uuid";
 
@@ -42,7 +44,7 @@ export class App
         owner: this.owner.json(),
     });
 
-    static create = async (data: ApiRequest.Apps.Create): Promise<App> =>
+    static create = async (token: string, data: ApiRequest.Apps.Create): Promise<App> =>
     {
         App.validate(data);
 

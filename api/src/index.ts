@@ -2,6 +2,7 @@ import * as admin from "firebase-admin";
 import * as express from "express";
 import * as cors from "cors";
 import * as helmet from "helmet";
+import * as bearerToken from "express-bearer-token";
 
 const serviceAccount = require("./service-account.json");
 
@@ -21,6 +22,7 @@ const app = express();
 
 app.use(cors());
 app.use(helmet());
+app.use(bearerToken());
 
 app.use(express.json());
 
@@ -65,6 +67,13 @@ app.post("/api/users", async (req, res) =>
 
 app.post("/api/apps", async (req, res) =>
 {
+  if (!req.token)
+  {
+    res.sendStatus(403);
+
+    return;
+  }
+
   const data: ApiRequest.Apps.Create = req.body;
 
   const response: ApiResponse.Apps.Create = {
@@ -77,7 +86,7 @@ app.post("/api/apps", async (req, res) =>
 
   try
   {
-    const app = await App.create(data);
+    const app = await App.create(req.token, data);
 
     response.result.data = app.json();
   }
