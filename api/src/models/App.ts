@@ -1,5 +1,6 @@
 import { firestore } from "firebase-admin";
 import * as bcrypt from "bcrypt";
+import { v4 as uuidv4 } from "uuid";
 
 import { ApiRequest } from "../typings/ApiRequest";
 import { ApiError } from "./ApiError";
@@ -51,7 +52,12 @@ export class App
 
         data.password = bcrypt.hashSync(data.password, 15);
 
-        const app = await db.collection("apps").add(<IApp>data);
+        const app = await db.collection("apps").add(<IApp>{
+            ...data,
+            api: {
+                key: uuidv4(),
+            },
+        });
 
         return new App(
             app.id,
