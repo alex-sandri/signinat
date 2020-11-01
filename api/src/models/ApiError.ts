@@ -22,11 +22,8 @@ export class ApiError
 
             case "app/name/empty": this.message = ApiError.EMPTY_FIELD; break;
 
-            case "app/email/empty": this.message = ApiError.EMPTY_FIELD; break;
-            case "app/email/already-exists": this.message = "An app with this email already exists"; break;
-
-            case "app/password/empty": this.message = ApiError.EMPTY_FIELD; break;
-            case "app/password/weak": this.message = "Please enter a stronger password"; break;
+            case "app/url/empty": this.message = ApiError.EMPTY_FIELD; break;
+            case "app/url/already-exists": this.message = "An app with this URL already exists"; break;
 
             default: this.message = "Unknown error"; break;
         }

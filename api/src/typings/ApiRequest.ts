@@ -28,8 +28,6 @@ export namespace ApiRequest
         {
             name: string,
             url: string,
-            email: string,
-            password: string,
         }
     }
 }
