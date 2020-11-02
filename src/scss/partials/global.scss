@@ -10,3 +10,58 @@ dialog
         margin-top: 0;
     }
 }
+
+form label,
+form label input:not([type=radio]),
+form label small
+{
+    display: block;
+}
+
+form label
+{
+    margin: 15px 0;
+}
+
+form label input:not([type=radio]),
+form button
+{
+    width: 100%;
+    padding: 10px;
+    font-family: inherit;
+    border: 2px solid $primary-color;
+    border-radius: 5px;
+    color: $secondary-color;
+    background-color: $primary-color;
+    outline: none;
+
+    &:disabled
+    {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
+form label input:focus
+{
+    color: $primary-color;
+    background-color: $secondary-color;
+}
+
+form label small:not(:empty)
+{
+    margin-top: 5px;
+}
+
+form button
+{
+    cursor: pointer;
+    margin-top: 30px;
+    transition: 300ms;
+
+    &:hover,
+    &:focus
+    {
+        opacity: 0.8;
+    }
+}
