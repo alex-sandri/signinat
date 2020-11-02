@@ -1,0 +1,12 @@
+dialog
+{
+    border: 2px solid $primary-color;
+    border-radius: 5px;
+    color: inherit;
+    background-color: $secondary-color;
+
+    h1
+    {
+        margin-top: 0;
+    }
+}
