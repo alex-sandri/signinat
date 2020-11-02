@@ -97,6 +97,15 @@ app.post("/api/apps", async (req, res) =>
     return;
   }
 
+  const session = await Session.retrieve(req.token);
+
+  if (!session)
+  {
+    res.sendStatus(403);
+
+    return;
+  }
+
   const data: ApiRequest.Apps.Create = req.body;
 
   const response: ApiResponse.Apps.Create = {
@@ -109,7 +118,7 @@ app.post("/api/apps", async (req, res) =>
 
   try
   {
-    const app = await App.create(req.token, data);
+    const app = await App.create(session, data);
 
     response.result.data = app.json();
   }

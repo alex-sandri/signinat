@@ -43,15 +43,11 @@ export class App
         owner: this.owner.json(),
     });
 
-    static create = async (token: string, data: ApiRequest.Apps.Create): Promise<App> =>
+    static create = async (session: Session, data: ApiRequest.Apps.Create): Promise<App> =>
     {
         App.validate(data);
 
         if (await App.exists(data.url)) throw new ApiError("app/url/already-exists");
-
-        const session = await Session.retrieve(token);
-
-        if (!session) throw new ApiError("session/inexistent");
 
         const app = await db.collection("apps").add(<IApp>{
             name: data.name,
