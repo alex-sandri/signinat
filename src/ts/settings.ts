@@ -17,6 +17,14 @@ Api.Sessions.retrieve(Settings.get("session") as string).then(session =>
         const urlInput = form.querySelector("#app-url") as HTMLInputElement;
 
         const submitButton = form.querySelector("button[type=submit]") as HTMLButtonElement;
+        const cancelButton = form.querySelector("button.cancel") as HTMLButtonElement;
+
+        const close = () =>
+        {
+            form.reset();
+
+            createNewAppDialog.close();
+        }
 
         form.onsubmit = async e =>
         {
@@ -39,12 +47,12 @@ Api.Sessions.retrieve(Settings.get("session") as string).then(session =>
             }
             else
             {
-                form.reset();
-
-                createNewAppDialog.close();
+                close();
             }
 
             submitButton.disabled = false;
         };
+
+        cancelButton.onclick = close;
     });
 });
