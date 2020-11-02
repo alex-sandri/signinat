@@ -16,8 +16,38 @@ dialog
     }
 }
 
+input,
+button
+{
+    padding: 10px;
+    font-family: inherit;
+    border: 2px solid $primary-color;
+    border-radius: 5px;
+    color: $secondary-color;
+    background-color: $primary-color;
+    outline: none;
+    
+    &:disabled
+    {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
+button
+{
+    cursor: pointer;
+    transition: 300ms;
+
+    &:hover,
+    &:focus
+    {
+        opacity: 0.8;
+    }
+}
+
 form label,
-form label input:not([type=radio]),
+form label input,
 form label small
 {
     display: block;
@@ -26,25 +56,6 @@ form label small
 form label
 {
     margin: 15px 0;
-}
-
-form label input:not([type=radio]),
-form button
-{
-    width: 100%;
-    padding: 10px;
-    font-family: inherit;
-    border: 2px solid $primary-color;
-    border-radius: 5px;
-    color: $secondary-color;
-    background-color: $primary-color;
-    outline: none;
-
-    &:disabled
-    {
-        opacity: 0.5;
-        pointer-events: none;
-    }
 }
 
 form label input:focus
@@ -58,15 +69,13 @@ form label small:not(:empty)
     margin-top: 5px;
 }
 
+form input,
 form button
 {
-    cursor: pointer;
-    margin-top: 30px;
-    transition: 300ms;
+    width: 100%;
+}
 
-    &:hover,
-    &:focus
-    {
-        opacity: 0.8;
-    }
+form button
+{
+    margin-top: 30px;
 }
