@@ -86,6 +86,27 @@ export class App
         );
     }
 
+    static list = async (session: Session): Promise<App[]> =>
+    {
+        const snapshot = await db.collection("apps").where("owner", "==", session.user.id).get();
+
+        const apps: App[] = [];
+
+        snapshot.docs.forEach(app =>
+        {
+            const data = app.data() as IApp;
+
+            apps.push(new App(
+                app.id,
+                data.name,
+                data.url,
+                session.user,
+            ));
+        });
+
+        return apps;
+    }
+
     static delete = async (id: string): Promise<void> => { await db.collection("apps").doc(id).delete(); }
 
     static withUrl = async (url: string): Promise<App | null> =>

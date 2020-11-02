@@ -1,3 +1,4 @@
+import { ISerializedApp } from "../../../api/src/models/App";
 import { ISerializedSession } from "../../../api/src/models/Session";
 import { ApiRequest } from "../../../api/src/typings/ApiRequest";
 import { ApiResponse } from "../../../api/src/typings/ApiResponse";
@@ -92,6 +93,17 @@ export namespace Api
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(data)
+            });
+
+            return response.json();
+        }
+
+        static list = async (): Promise<ISerializedApp[]> =>
+        {
+            const response = await fetch(Apps.ENDPOINT, {
+                headers: {
+                    "Authorization": `Bearer ${Settings.get("session")}`,
+                },
             });
 
             return response.json();

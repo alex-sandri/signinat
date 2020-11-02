@@ -65,6 +65,29 @@ app.post("/api/users", async (req, res) =>
   res.send(response);
 });
 
+app.get("/api/apps", async (req, res) =>
+{
+  if (!req.token)
+  {
+    res.sendStatus(403);
+
+    return;
+  }
+
+  const session = await Session.retrieve(req.token);
+
+  if (!session)
+  {
+    res.sendStatus(403);
+
+    return;
+  }
+
+  const apps = await App.list(session);
+
+  res.send(apps.map(app => app.json()));
+});
+
 app.post("/api/apps", async (req, res) =>
 {
   if (!req.token)
