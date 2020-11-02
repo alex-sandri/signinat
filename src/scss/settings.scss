@@ -1,5 +1,29 @@
 @import "partials/variables.scss";
 
+@each $section in profile, developer
+{
+    ##{$section}
+    {
+        display: none;
+    }
+
+    html[data-section=#{$section}]
+    {
+        ##{$section}
+        {
+            display: block;
+        }
+    }
+}
+
+html[data-section=profile]
+{
+    #profile
+    {
+        display: block;
+    }
+}
+
 #profile .field ~ .field
 {
     margin-top: 15px;
