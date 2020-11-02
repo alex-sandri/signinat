@@ -7,7 +7,11 @@ Api.Sessions.retrieve(Settings.get("session") as string).then(session =>
 {
     createNewApp.addEventListener("click", async () =>
     {
-        const form = document.getElementById("create-new-app-form") as HTMLFormElement;
+        const createNewAppDialog = document.getElementById("create-new-app-dialog") as HTMLDialogElement;
+
+        createNewAppDialog.show();
+
+        const form = createNewAppDialog.querySelector("form") as HTMLFormElement;
 
         const nameInput = form.querySelector("#app-name") as HTMLInputElement;
         const urlInput = form.querySelector("#app-url") as HTMLInputElement;
@@ -36,6 +40,8 @@ Api.Sessions.retrieve(Settings.get("session") as string).then(session =>
             else
             {
                 form.reset();
+
+                createNewAppDialog.hidden = true;
             }
 
             submitButton.disabled = false;

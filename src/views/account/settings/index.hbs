@@ -30,6 +30,20 @@
             <button id="create-new-app">Create new App</button>
         </section>
     </main>
+    <dialog id="create-new-app-dialog">
+        <h1>Create new App</h1>
+        <form>
+            <label for="app-name">
+                App Name
+                <input type="text" id="app-name" name="name" required>
+            </label>
+            <label for="app-url">
+                URL
+                <input type="url" id="app-url" name="url" required>
+            </label>
+            <button type="submit">Create</button>
+        </form>
+    </dialog>
     {{> account-menu }}
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/settings.js"></script>
