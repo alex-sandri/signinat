@@ -7,14 +7,6 @@ main
     margin: 0 auto;
 }
 
-fieldset
-{
-    display: flex;
-    justify-content: space-evenly;
-    border: 1px solid $primary-color;
-    border-radius: 5px;
-}
-
 form label,
 form label input:not([type=radio]),
 form label small
