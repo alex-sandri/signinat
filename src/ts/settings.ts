@@ -1,6 +1,14 @@
 import { Api } from "./classes/Api";
 import { Settings } from "./classes/Settings";
 
+[ "profile", "developer" ].forEach(section =>
+{
+    (document.querySelector(`footer a[href="#${section}"]`) as HTMLAnchorElement).onclick = () =>
+    {
+        document.documentElement.setAttribute("data-section", section);
+    };
+});
+
 const createNewApp = document.getElementById("create-new-app") as HTMLButtonElement;
 
 Api.Sessions.retrieve(Settings.get("session") as string).then(session =>
