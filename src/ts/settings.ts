@@ -9,7 +9,7 @@ Api.Sessions.retrieve(Settings.get("session") as string).then(session =>
     {
         const createNewAppDialog = document.getElementById("create-new-app-dialog") as HTMLDialogElement;
 
-        createNewAppDialog.show();
+        createNewAppDialog.showModal();
 
         const form = createNewAppDialog.querySelector("form") as HTMLFormElement;
 
