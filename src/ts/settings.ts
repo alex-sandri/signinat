@@ -56,3 +56,8 @@ Api.Sessions.retrieve(Settings.get("session") as string).then(session =>
         cancelButton.onclick = close;
     });
 });
+
+Api.Apps.list().then(apps =>
+{
+    console.log(apps);
+});
