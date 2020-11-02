@@ -24,6 +24,17 @@ html[data-section=profile]
     }
 }
 
+main
+{
+    section
+    {
+        h1
+        {
+            margin-top: 0;
+        }
+    }
+}
+
 #profile .field ~ .field
 {
     margin-top: 15px;
