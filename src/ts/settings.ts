@@ -59,5 +59,8 @@ Api.Sessions.retrieve(Settings.get("session") as string).then(session =>
 
 Api.Apps.list().then(apps =>
 {
-    console.log(apps);
+    apps.forEach(app =>
+    {
+        console.log(app);
+    });
 });

@@ -32,6 +32,8 @@ module.exports = [
         entry: {
             main: path.resolve(__dirname, "src/scss/main.scss"),
             signup: path.resolve(__dirname, "src/scss/signup.scss"),
+            account: path.resolve(__dirname, "src/scss/account.scss"),
+            settings: path.resolve(__dirname, "src/scss/settings.scss"),
         },
         output: {
             filename: "[name].style.js",

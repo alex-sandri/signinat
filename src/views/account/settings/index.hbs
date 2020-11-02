@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignInAt - Settings</title>
     <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/settings.css">
 </head>
 <body>
     {{> header }}
     <main>
-        <h1>Settings</h1>
         <section id="profile">
-            <h2>Profile</h2>
+            <h1>Profile</h1>
             <div class="field">
                 <h4 class="name">First Name</h4>
                 <small class="value first-name"></small>
@@ -26,7 +26,7 @@
             </div>
         </section>
         <section id="developer">
-            <h2>Developer</h2>
+            <h1>Developer</h1>
             <button id="create-new-app">Create new App</button>
         </section>
     </main>
@@ -45,6 +45,10 @@
             <button type="button" class="cancel">Cancel</button>
         </form>
     </dialog>
+    <footer>
+        <a href="#profile">Profile</a>
+        <a href="#developer">Developer</a>
+    </footer>
     {{> account-menu }}
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/settings.js"></script>
