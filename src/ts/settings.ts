@@ -41,7 +41,7 @@ Api.Sessions.retrieve(Settings.get("session") as string).then(session =>
             {
                 form.reset();
 
-                createNewAppDialog.hidden = true;
+                createNewAppDialog.close();
             }
 
             submitButton.disabled = false;

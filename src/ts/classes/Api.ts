@@ -1,6 +1,7 @@
 import { ISerializedSession } from "../../../api/src/models/Session";
 import { ApiRequest } from "../../../api/src/typings/ApiRequest";
 import { ApiResponse } from "../../../api/src/typings/ApiResponse";
+import { Settings } from "./Settings";
 
 export namespace Api
 {
@@ -87,6 +88,7 @@ export namespace Api
             const response = await fetch(Apps.ENDPOINT, {
                 method: "POST",
                 headers: {
+                    "Authorization": `Bearer ${Settings.get("session")}`,
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(data)
