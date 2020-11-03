@@ -1,8 +1,15 @@
 import { Api } from "./classes/Api";
 import { Settings } from "./classes/Settings";
 
+document.documentElement.setAttribute("data-section", "profile");
+
 [ "profile", "developer" ].forEach(section =>
 {
+    if (location.hash.replace("#", "") === section)
+    {
+        document.documentElement.setAttribute("data-section", section);
+    }
+
     (document.querySelector(`footer a[href="#${section}"]`) as HTMLAnchorElement).onclick = () =>
     {
         document.documentElement.setAttribute("data-section", section);
